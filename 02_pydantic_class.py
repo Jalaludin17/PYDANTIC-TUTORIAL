@@ -14,3 +14,4 @@ patient1= Patient(**patient_info)
 
 insert_patient_data(patient1)
 
+
