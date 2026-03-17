@@ -1,13 +1,17 @@
 from pydantic import BaseModel
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 class Patient(BaseModel):
     name: str
     age: int
     weight: float
     married: bool
-    ellergies: List[str] #imported List to use here
+    ellergies: Optional[List[str]] = None  # imported List to use here
     contact_details: Dict[str, str]
+
+#all above fields are required, if any of them is missing, it will raise a validation error. 
+# To make them optional, we can use Optional from typing module and set default value to None.
+#as used for ellergies
 
 def insert_patient_data(patient: Patient):
     print(patient.name)
@@ -32,7 +36,7 @@ pateint_info = {
     'age': 27,
     'weight': 70.5,
     'married': True,
-    'ellergies': ['pollen', 'dust'],
+    #'ellergies': ['pollen', 'dust'],
     'contact_details': {'email': 'jalal@example.com', 'phone': '023-45678900'}
 }
 patient1 = Patient(**pateint_info)
