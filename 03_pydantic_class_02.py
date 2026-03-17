@@ -33,7 +33,7 @@ pateint_info = {
     'weight': 70.5,
     'married': True,
     'ellergies': ['pollen', 'dust'],
-    'contact_details': {'email': 'jalal@example.com'}
+    'contact_details': {'email': 'jalal@example.com', 'phone': '023-45678900'}
 }
 patient1 = Patient(**pateint_info)
 
