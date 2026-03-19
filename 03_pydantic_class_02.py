@@ -1,12 +1,13 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import List, Dict, Optional
 
 class Patient(BaseModel):
     name: str
+    email: EmailStr
     age: int
     weight: float
     married: bool
-    ellergies: Optional[List[str]] = None  # imported List to use here
+    allergies: Optional[List[str]] = None  # imported List to use here
     contact_details: Dict[str, str]
 
 #all above fields are required, if any of them is missing, it will raise a validation error. 
