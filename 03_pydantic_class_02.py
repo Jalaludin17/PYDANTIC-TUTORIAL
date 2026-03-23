@@ -1,12 +1,12 @@
-from pydantic import BaseModel, EmailStr, AnyUrl
+from pydantic import BaseModel, EmailStr, AnyUrl, Field
 from typing import List, Dict, Optional
 
-class Patient(BaseModel):
-    name: str
-    email: EmailStr
-    linked_url: Optional[AnyUrl] = None
-    age: int
-    weight: float
+class Patient(BaseModel):  
+    name: str = Field(max_length=50)
+    email: EmailStr  #custom type for email validation
+    linked_url: Optional[AnyUrl] = None #custom type for url validation, 
+    age: int = Field(gt=15, lt=40)
+    weight: float = Field(gt=0) #gt means greater than 0
     married: bool
     allergies: Optional[List[str]] = None  # imported List to use here
     contact_details: Dict[str, str]
@@ -40,8 +40,8 @@ def update_patient_data(patient: Patient):
 pateint_info = {
     'name': 'jalal',
     'email':'abc@example.com',
-    'linked_url': 'https://www.example.com',
-    'age': 27,
+    'linked_url': 'https://www.example.com',   
+    'age': 39,
     'weight': 70.5,
     'married': True,
     #'allergies': ['pollen', 'dust'],
